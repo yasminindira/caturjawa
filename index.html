@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Catur Jawa</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- HEADER -->
+    <header class="topbar">
+
+      <a href="#" class="brand">
+        <span class="brand-mark">ꦗ</span>
+
+        <span>
+          <small>PERMAINAN NUSANTARA</small>
+          <strong>Catur Jawa</strong>
+        </span>
+      </a>
+
+      <div class="top-actions">
+        <button class="ghost-btn" id="soundBtn">
+          🔊 Suara
+        </button>
+
+        <button class="gold-btn" id="newGameBtn">
+          ↻ Game Baru
+        </button>
+      </div>
+
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <div>
+
+        <span class="eyebrow">
+          TRADISI • STRATEGI • NUSANTARA
+        </span>
+
+        <h1>
+          Asah strategi,
+          <br>
+          <em>rasa Jawa.</em>
+        </h1>
+
+        <p>
+          Permainan catur klasik dengan tampilan hangat
+          bernuansa budaya Jawa dan pilihan melawan komputer.
+        </p>
+
+      </div>
+
+      <div class="hero-pattern">
+        ꦲꦤꦕꦫꦏ
+      </div>
+
+    </section>
+
+
+    <!-- MODE -->
+    <section class="mode-card">
+
+      <div class="mode-copy">
+
+        <span class="mini-label">
+          MODE PERMAINAN
+        </span>
+
+        <h2 id="modeTitle">
+          Lawan Komputer
+        </h2>
+
+        <p id="modeDescription">
+          Kamu bermain sebagai Putih.
+          Komputer bermain sebagai Hitam.
+        </p>
+
+      </div>
+
+      <div class="mode-buttons">
+
+        <button
+          class="mode-btn active"
+          data-mode="ai"
+        >
+          🤖 Vs Komputer
+        </button>
+
+        <button
+          class="mode-btn"
+          data-mode="local"
+        >
+          👥 2 Pemain
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- GAME -->
+    <section class="game-layout">
+
+
+      <!-- LEFT PANEL -->
+      <aside class="side-panel">
+
+        <div class="player">
+
+          <div class="avatar black-avatar">
+            ♟
+          </div>
+
+          <div>
+            <small>LAWAN</small>
+            <h3 id="blackName">
+              Komputer
+            </h3>
+          </div>
+
+          <span class="dot"></span>
+
+        </div>
+
+
+        <div class="score-box">
+
+          <span>STATUS</span>
+
+          <strong id="statusText">
+            Giliran Putih
+          </strong>
+
+          <div class="progress">
+            <i id="turnProgress"></i>
+          </div>
+
+        </div>
+
+
+        <div class="captured-box">
+
+          <div class="capture-title">
+            <span>Bidak ditangkap</span>
+            <b id="blackScore">0</b>
+          </div>
+
+          <div
+            class="captured-pieces"
+            id="blackCaptured"
+          ></div>
+
+        </div>
+
+
+        <div class="tip">
+
+          <span>✦</span>
+
+          <p>
+            <b>Pitutur:</b>
+            "Alon-alon waton kelakon."
+            Strategi yang sabar membawa hasil.
+          </p>
+
+        </div>
+
+      </aside>
+
+
+      <!-- BOARD -->
+      <section class="board-section">
+
+        <div
+          class="game-message"
+          id="gameMessage"
+        >
+          Pilih bidak putih untuk memulai.
+        </div>
+
+
+        <div class="board-frame">
+
+          <div class="files top-files">
+            <span>a</span>
+            <span>b</span>
+            <span>c</span>
+            <span>d</span>
+            <span>e</span>
+            <span>f</span>
+            <span>g</span>
+            <span>h</span>
+          </div>
+
+
+          <div class="board-area">
+
+            <div class="ranks">
+              <span>8</span>
+              <span>7</span>
+              <span>6</span>
+              <span>5</span>
+              <span>4</span>
+              <span>3</span>
+              <span>2</span>
+              <span>1</span>
+            </div>
+
+            <div
+              id="board"
+              class="board"
+            ></div>
+
+          </div>
+
+
+          <div class="files bottom-files">
+            <span>a</span>
+            <span>b</span>
+            <span>c</span>
+            <span>d</span>
+            <span>e</span>
+            <span>f</span>
+            <span>g</span>
+            <span>h</span>
+          </div>
+
+        </div>
+
+
+        <p class="board-note">
+          Klik bidak → pilih kotak tujuan.
+          Kotak bercahaya menunjukkan langkah yang tersedia.
+        </p>
+
+      </section>
+
+
+      <!-- RIGHT PANEL -->
+      <aside class="side-panel">
+
+        <div class="player">
+
+          <div class="avatar white-avatar">
+            ♙
+          </div>
+
+          <div>
+            <small>PEMAIN</small>
+
+            <h3>
+              Putih
+            </h3>
+          </div>
+
+          <span class="dot active-dot"></span>
+
+        </div>
+
+
+        <div class="captured-box">
+
+          <div class="capture-title">
+
+            <span>
+              Bidak ditangkap
+            </span>
+
+            <b id="whiteScore">
+              0
+            </b>
+
+          </div>
+
+          <div
+            class="captured-pieces"
+            id="whiteCaptured"
+          ></div>
+
+        </div>
+
+
+        <div class="history-box">
+
+          <div class="section-title">
+
+            <span>
+              RIWAYAT LANGKAH
+            </span>
+
+            <button id="clearHistory">
+              ×
+            </button>
+
+          </div>
+
+          <div
+            id="history"
+            class="history"
+          >
+            Belum ada langkah.
+          </div>
+
+        </div>
+
+      </aside>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+      <span>
+        ꦗꦮ Catur Jawa
+      </span>
+
+      <span>
+        Made for Nusantara • 2026
+      </span>
+
+    </footer>
+
+  </main>
+
+
+  <!-- WIN MODAL -->
+  <div
+    class="modal hidden"
+    id="resultModal"
+  >
+
+    <div class="modal-card">
+
+      <div
+        class="modal-symbol"
+        id="resultSymbol"
+      >
+        ♛
+      </div>
+
+      <span class="mini-label">
+        PERMAINAN SELESAI
+      </span>
+
+      <h2 id="resultTitle">
+        Putih Menang!
+      </h2>
+
+      <p id="resultText">
+        Strategi yang bagus.
+      </p>
+
+      <button
+        class="gold-btn"
+        id="modalNewGame"
+      >
+        Main Lagi
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
